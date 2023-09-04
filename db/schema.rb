@@ -19,9 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_081651) do
     t.string "measurement_unit"
     t.decimal "price", precision: 10, scale: 2
     t.integer "quanity"
-    t.integer "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -30,17 +31,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_081651) do
     t.integer "cooking_time_minutes"
     t.string "description"
     t.boolean "is_public"
-    t.integer "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "recipes_foods", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "food_id", null: false
-    t.integer "recipe_id", null: false
+    t.bigint "food_id"
+    t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_recipes_foods_on_food_id"
+    t.index ["recipe_id"], name: "index_recipes_foods_on_recipe_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_081651) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "foods", "users"
+  add_foreign_key "recipes", "users"
+  add_foreign_key "recipes_foods", "foods"
+  add_foreign_key "recipes_foods", "recipes"
 end
