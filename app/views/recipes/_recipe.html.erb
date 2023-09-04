@@ -1,0 +1,12 @@
+<div class="recipe">
+  <h2>Here is a list of my recipes</h2>
+  <% recipes.each do |recipe|%>
+    <div class='recipe_box'>
+      <div class='recipe_name'>
+       <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+        <%= link_to "REMOVE", recipe_path(recipe.id), method: :delete %>
+        <p><%= recipe.description%></p>
+      </div>
+    </div>
+  <%end%>
+</div>
