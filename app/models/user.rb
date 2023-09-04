@@ -4,6 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         #  , :confirmable
+         
+    # Associations
+    has_many :foods
+    has_many :recipes
 
-#  validates :name, presence: true
+    # Attributes
+    attribute :name, :string
+
+    # Callbacks
+
+    # Validations
+    validates :name, presence: true
+
+    # Mehtods
+
 end
