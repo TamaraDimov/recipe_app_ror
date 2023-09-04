@@ -4,7 +4,7 @@
     <div class='recipe_box'>
       <div class='recipe_name'>
        <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
-        <%= link_to "REMOVE", recipe_path(recipe.id), method: :delete %>
+        <%= link_to "REMOVE", recipe_path(recipe), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
         <p><%= recipe.description%></p>
       </div>
     </div>
