@@ -1,14 +1,14 @@
 class RecipeFood < ApplicationRecord
-    # Associations
-    belongs_to :food, class_name: 'Food'
-    belongs_to :recipe, class_name: 'Recipe'
+  # Associations
+  belongs_to :food, class_name: 'Food'
+  belongs_to :recipe, class_name: 'Recipe'
 
-    # Attributes
-    attribute :quantity, :integer
+  # Attributes
+  attribute :quantity, :integer
 
-    # Callbacks
+  # Callbacks
 
-    # Validations
+  # Validations
 
-    # Mehtods
+  # Mehtods
 end
