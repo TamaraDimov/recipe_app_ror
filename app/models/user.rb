@@ -3,20 +3,19 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-        #  , :confirmable
-         
-    # Associations
-    has_many :foods
-    has_many :recipes
+  #  , :confirmable
 
-    # Attributes
-    attribute :name, :string
+  # Associations
+  has_many :foods
+  has_many :recipes
 
-    # Callbacks
+  # Attributes
+  attribute :name, :string
 
-    # Validations
-    validates :name, presence: true
+  # Callbacks
 
-    # Mehtods
+  # Validations
+  validates :name, presence: true
 
+  # Mehtods
 end
