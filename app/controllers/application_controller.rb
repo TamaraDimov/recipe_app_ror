@@ -11,4 +11,3 @@ class ApplicationController < ActionController::Base
   #                                     keys: [:name, :email, :password, :current_password])
   # end
 end
-
