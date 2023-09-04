@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # User.destroy_all
-User.create([{ name: "Tamara", email: "tamemojsoska@gmail.com", password: "123456" }]);
+User.create([{ id:2, name: "Tamara", email: "tamemojsoska@gmail.com", password: "123456" }]);
 Recipe.create([
   {
     name: "Pizza",
