@@ -13,6 +13,6 @@ class Recipe < ApplicationRecord
   # Callbacks
 
   # Validations
-
+  validates :is_public, inclusion: { in: [true, false] }
   # Mehtods
 end

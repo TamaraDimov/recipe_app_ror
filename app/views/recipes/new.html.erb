@@ -1,0 +1,17 @@
+<h2>Add new food recipe</h2>
+
+<%= form_with model:@recipe, url: new_recipe_path(@user) do |form| %>
+  <div class="input">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "Recipe title...", required: true%>
+  </div>
+  <div class="input">
+    <%= form.label  :description %>
+    <%= form.text_field :description, placeholder: "Recipe description...", required: true%>
+  </div>
+   <div class="field">
+    <%= form.label :is_public %>
+    <%= form.check_box :is_public %>
+  </div>
+  <%=form.submit "create recipe" %>
+<%end%>
