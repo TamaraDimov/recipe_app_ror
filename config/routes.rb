@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   } 
-  # resources :users, only: [:index]
+  resources :foods, only: [:index]
+  resources :recipes, only: [:index, :show]
    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "welcome#index"
   # Defines the root path route ("/")
