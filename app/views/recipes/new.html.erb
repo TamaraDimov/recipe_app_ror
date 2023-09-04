@@ -16,14 +16,10 @@
   <div class="input">
     <%= form.label  :cooking_time_minutes %>
     <%= form.text_field :cooking_time_minutes, placeholder: "Cooking time in minutes", required: true%>
-  </div>
-  <div class="field">
+  </div>  
+  <div class="input">
     <%= form.label :is_public %>
-    <%= form.check_box :is_public %>
+    <%= form.select :is_public, options_for_select(['true', 'false']), prompt: 'Select a category' %>
   </div>
-   <div class="input">
-        <%= form.label :is_public %>
-        <%= form.select :is_public, options_for_select(['true', 'false']), prompt: 'Select a category' %>
-      </div>
   <%= form.submit "Create Recipe" %>
  <%end%>
