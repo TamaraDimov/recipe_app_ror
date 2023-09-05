@@ -4,9 +4,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   } 
   resources :foods, only: [:index, :new, :destroy, :show]
-  resources :recipes, only: [:index, :show, :destroy]
-   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :recipes, except: [:edit, :update] do
+    resources :recipe_foods, except: %i[edit update]
+    collection do
+      get 'public'
+    end
+  end
+
   root "welcome#index"
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
