@@ -50,7 +50,7 @@
   transition: 0.4s;
 }
 
-.slider:before {
+.slider::before {
   position: absolute;
   content: "";
   height: 26px;
@@ -64,10 +64,10 @@
 
 /* Change the appearance of the slider when it's checked */
 .switch input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
-.switch input:checked + .slider:before {
+.switch input:checked + .slider::before {
   transform: translateX(26px);
 }
 
