@@ -14,5 +14,7 @@ class Recipe < ApplicationRecord
 
   # Validations
   validates :is_public, inclusion: { in: [true, false] }
+  validates :name, :preparation_time_minutes, :cooking_time_minutes, presence: true
+  validates :preparation_time_minutes, :cooking_time_minutes, numericality: { only_integer: true }
   # Mehtods
 end
