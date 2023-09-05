@@ -1,15 +1,15 @@
 <div class="public">
-<h2>Here is a list of public recipes</h2>
+  <h2>Here is a list of public recipes</h2>
   <% @recipes.each do |recipe| %>
     <div class='recipe_box'>
       <div class='recipe_name'>
-       <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
-       <p>by: <%=recipe.user.name%></p>
+        <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+        <p>by: <%= recipe.user.name %></p>
       </div>
       <div class='detail'>
-    <p>total number of foods: </p>
-    <p>total price of foods: </p>
-   </div>
+        <p>total number of foods: <%= recipe.foods.count %></p>
+        <p>total price of foods: $<%= recipe.foods.sum(:price) %></p>
+      </div>
     </div>
-  <%end%>
+  <% end %>
 </div>

@@ -35,5 +35,12 @@ Recipe.create([
     quanity: 4,
     user_id: 2
     },
+    {
+      name: "Tost",
+      measurement_unit: "km",
+      price: 15.15,
+      quanity: 4,
+      user_id: 2
+      },
 
  ])

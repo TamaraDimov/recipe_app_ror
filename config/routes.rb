@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   } 
   resources :foods, only: [:index, :new, :destroy, :show]
   resources :recipes, except: [:edit, :update] do
+    resources :recipe_foods, except: %i[edit update]
     collection do
       get 'public'
     end
