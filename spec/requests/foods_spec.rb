@@ -38,7 +38,9 @@ RSpec.describe 'FoodsController', type: :request do
     end
 
     it 'the response body includes correct placeholder text' do
-      expect(response.body).to include("Measurement unit:")
+      food = FactoryBot.create(:food)
+      get food_path(food)
+      expect(response.body).to include(food.name)
     end
   end
 end
