@@ -9,6 +9,7 @@ class RecipeFood < ApplicationRecord
   # Callbacks
 
   # Validations
+  validates :quantity, presence: true
 
   # Mehtods
 end
