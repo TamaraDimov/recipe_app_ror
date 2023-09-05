@@ -7,7 +7,7 @@ RSpec.describe RecipeFood, type: :model do
   let(:food) { FactoryBot.create(:food) }
   let(:recipe) { FactoryBot.create(:recipe) }
 
-  subject { FactoryBot.create(:recipe_food, food: food, recipe: recipe) }
+  subject { FactoryBot.create(:recipe_food, food:, recipe:) }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid

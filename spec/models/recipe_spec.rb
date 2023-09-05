@@ -4,7 +4,7 @@ RSpec.describe Recipe, type: :model do
   subject { FactoryBot.create(:recipe) }
 
   before { subject.save }
- 
+
   it 'should have a name' do
     subject.name = nil
     expect(subject).not_to be_valid
