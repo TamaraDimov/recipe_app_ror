@@ -2,7 +2,7 @@
 <section class="recipe-details">
   <div class="d-flex gap">
     <p>Preparation time: <%= @recipe.preparation_time_minutes %> mins </p>
-    <%= form_for @recipe, url: is_public_toggle_recipe_path(@recipe), method: :patch, remote: true, authenticity_token: true, html: { class: 'toggle-form' } do |f| %>
+    <%= form_for @recipe, url: public_toggle_recipe_path(@recipe), method: :patch, remote: true, authenticity_token: true, html: { class: 'toggle-form' } do |f| %>
         <div class="slider-container">
         <span class="switch-label">Public</span>
         <label class="switch">

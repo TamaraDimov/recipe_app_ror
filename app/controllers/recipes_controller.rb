@@ -35,11 +35,11 @@ class RecipesController < ApplicationController
     render 'public'
   end
 
-  def is_public_toggle
+  def public_toggle
     @recipe = Recipe.find(params[:id])
     @recipe.is_public = !@recipe.is_public
     @recipe.save
-    redirect_to recipe_path(@recipe), notice: 'The recipe is now ' + (@recipe.is_public ? 'public' : 'private')
+    redirect_to recipe_path(@recipe), notice: "The recipe is now #{@recipe.is_public ? 'public' : 'private'}"
   end
 
   def recipe_params

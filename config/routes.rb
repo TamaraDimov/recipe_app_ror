@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :foods, only: [:index, :new, :destroy, :show]
   resources :recipes, except: [:edit, :update] do
     member do
-      patch :is_public_toggle
+      patch :public_toggle
     end
     resources :recipe_foods, except: %i[edit update]
     collection do
