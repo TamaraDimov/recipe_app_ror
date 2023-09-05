@@ -26,7 +26,6 @@ Recipe.create([
     measurement_unit: "40 mins",
     price: "15mins",
     quanity: 6,
-    user_id: 2
     },
   {
     name: "Kabsa",

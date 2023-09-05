@@ -7,10 +7,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  # def show
-  #   @user = current_user
-  #   @recipe = Recipe.find(params[:id])
-  # end
+  def show
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+    @foods = @recipe.foods
+  end
 
   def create
     @user = current_user
@@ -32,6 +33,13 @@ class RecipesController < ApplicationController
   def public
     @recipes = Recipe.where(is_public: true).order(created_at: :desc)
     render 'public'
+  end
+
+  def public_toggle
+    @recipe = Recipe.find(params[:id])
+    @recipe.is_public = !@recipe.is_public
+    @recipe.save
+    redirect_to recipe_path(@recipe), notice: "The recipe is now #{@recipe.is_public ? 'public' : 'private'}"
   end
 
   def recipe_params
