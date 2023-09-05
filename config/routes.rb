@@ -1,14 +1,15 @@
-# config/routes.rb
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   } 
-
   resources :foods, only: [:index, :new, :destroy, :show]
-  resources :recipes, only: [:index, :new, :show, :destroy]
-
-  get 'public_recipes', to: 'recipes#public', as: 'public_recipes'  # Define a custom route
+  resources :recipes, except: [:edit, :update] do
+    resources :recipe_foods, except: %i[edit update]
+    collection do
+      get 'public'
+    end
+  end
 
   root "welcome#index"
 end
