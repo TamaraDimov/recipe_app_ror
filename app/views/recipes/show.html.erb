@@ -17,9 +17,8 @@
   <p>Cooking time: <%= @recipe.cooking_time_minutes %> mins </p>
   <p>Steps go here...</p>
   <div class="d-flex gap bottom-line p-1">
-    <%= button_to "Generate shopping list", new_food_path, method: :post, class: "btn btn-primary" %>
-    <%= button_to "Add ingredient", new_food_path, method: :post, class: "btn btn-primary" %>
-  </div>
+<%= button_to "Generate shopping list", general_shopping_list_recipes_path(@recipe), method: :get, class: "btn btn-primary" %>
+  <%= button_to "Add ingredient", general_shopping_list_recipes_path(@recipe), method: :get, class: "btn btn-primary" %>  </div>
 </section>
 <table class="table">
   <thead>

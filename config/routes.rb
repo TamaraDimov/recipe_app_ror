@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :recipe_foods, except: %i[edit update]
     collection do
       get 'public'
+      get 'general_shopping_list'
     end
   end
 

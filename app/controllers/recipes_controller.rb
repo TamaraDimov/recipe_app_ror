@@ -45,4 +45,14 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time_minutes, :cooking_time_minutes, :description, :is_public)
   end
+
+  def general_shopping_list
+    @user = current_user
+    @recipe = Recipe.includes(:foods).find_by(id: params[:id])
+    # if @recipe
+    #   render 'general_shopping_list'
+    # else
+    #   redirect_to recipes_path, notice: 'The recipe was not found'
+    # end
+  end
 end
