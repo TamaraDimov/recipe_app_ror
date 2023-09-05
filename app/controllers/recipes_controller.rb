@@ -7,10 +7,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  # def show
-  #   @user = current_user
-  #   @recipe = Recipe.find(params[:id])
-  # end
+  def show
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+    @foods = @recipe.foods
+  end
 
   def create
     @user = current_user
