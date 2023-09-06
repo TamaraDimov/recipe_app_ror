@@ -13,6 +13,7 @@ class Food < ApplicationRecord
   # Callbacks
 
   # Validations
-
+  validates :name, :measurement_unit, :price, :quantity, presence: true
+  validates :quantity, numericality: { only_integer: true }
   # Mehtods
 end
