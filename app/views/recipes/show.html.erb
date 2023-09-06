@@ -1,7 +1,11 @@
-<h1><%= @recipe.name %> Recipe</h1>
+<h3>Recipe no.<%= @recipe.id %> full description</h3>
+<h3><%= @recipe.name %></h3>
 <section class="recipe-details">
   <div class="d-flex gap">
-    <p>Preparation time: <%= @recipe.preparation_time_minutes %> mins </p>
+    <div class="right">
+      <p class="input">Preparation time: <%= @recipe.preparation_time_minutes %> mins </p>
+      <p  class="input">Cooking time: <%= @recipe.cooking_time_minutes %> mins </p>
+    </div>
     <%= form_for @recipe, url: public_toggle_recipe_path(@recipe), method: :patch, remote: true, authenticity_token: true, html: { class: 'toggle-form' } do |f| %>
         <div class="slider-container">
         <span class="switch-label">Public</span>
@@ -14,11 +18,13 @@
       <%= f.submit 'Toggle', class: 'hidden-submit', style: 'display: none;' %>
     <% end %>
   </div>
-  <p>Cooking time: <%= @recipe.cooking_time_minutes %> mins </p>
-  <p>Description: <%= @recipe.description %></p>
+  <p  class="input"><%= @recipe.description%></p>
   <div class="d-flex gap bottom-line p-1">
-  <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post %>
-  <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary" %>
+    <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post, class: "btn" %>
+    <%#= link_to "Generate shopping list", new_food_path, method: :post, class: "btn" %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn" %>
+    <%#= link_to "Add ingredient", new_food_path, method: :post, class: "btn" %>
+  </div>
 </section>
  <%if @foods == []%>
       <h2>you have no food ingredients yet, click on "Add ingredient" to add to the list</h2>
@@ -26,19 +32,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Food</th>
-      <th>Quantity</th>
-      <th>Value</th>
-      <th>Actions</th>
+      <th class="input title">Food</th>
+      <th class="input title">Quantity</th>
+      <th class="input title">Value</th>
+      <th class="input title">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @recipe_foods.each do |recipe_food| %>
       <tr>
-        <td><%= recipe_food.food.name %></td>
-        <td><%= recipe_food.quantity %></td>
-        <td><%= recipe_food.food.price %></td>
-        <td>
+        <td class="input"><%= recipe_food.food.name %></td>
+        <td class="input"><%= recipe_food.quantity %></td>
+        <td class="input"><%= recipe_food.food.price %></td>
+        <td class="input">
           <%= link_to 'Delete', recipe_food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
           <button class="modify-button">Modify</button>
           <div class="modify-form" style="display: none;">
