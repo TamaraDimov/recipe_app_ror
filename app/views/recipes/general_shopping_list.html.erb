@@ -1,0 +1,24 @@
+<h2>shopping list</h2>
+<div class="amount">
+  <p>Amount of food to buy: $<%#= @recipe.foods.count %></p>
+  <p>Total value of food needed: $<%= recipe.foods.sum(:price) %></p>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <%# @recipes.foods.each do |food| %>
+    <tbody>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.quantity %><%= food.measurement_unit %></td>
+        <td><%= food.quantity * food.price %></td>
+      </tr>
+    </tbody>
+  <%# end %>
+</table>

@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
   def show
     @user = current_user
     @recipe = Recipe.find(params[:id])
-    @foods = @recipe.foods
+    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
+    @foods = @recipe_foods.map(&:food)
   end
 
   def create
@@ -40,6 +41,16 @@ class RecipesController < ApplicationController
     @recipe.is_public = !@recipe.is_public
     @recipe.save
     redirect_to recipe_path(@recipe), notice: "The recipe is now #{@recipe.is_public ? 'public' : 'private'}"
+  end
+
+  def general_shopping_list
+    @user = current_user
+    @recipe = Recipe.includes(:foods).find_by(id: params[:id])
+    # if @recipe
+    #   render 'general_shopping_list'
+    # else
+    #   redirect_to recipes_path, notice: 'The recipe was not found'
+    # end
   end
 
   def recipe_params
