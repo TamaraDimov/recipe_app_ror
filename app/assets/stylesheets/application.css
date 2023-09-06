@@ -1,7 +1,6 @@
 .recipe_box {
   display: flex;
   justify-content: space-between;
-  align-items: start;
   border: solid 1px grey;
   border-radius: 5px;
   margin-top: 10px;
@@ -9,15 +8,10 @@
 
 .recipe_name {
   width: 40%;
-}
-
-.recipe_name {
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: end;
-
-  /* row-gap: 10px; */
   align-content: center;
   margin: 5px;
 }
@@ -83,7 +77,6 @@
 
 .d-flex {
   display: flex;
-  align-items: space-between;
   gap: 55%;
 }
 
@@ -107,7 +100,6 @@ h3 {
 .input {
   padding: 10px;
   border: 1px solid #ddd;
-  padding: 10px;
 }
 
 .title {
@@ -133,7 +125,6 @@ a {
 }
 
 .add {
-  display: inline-flexbox;
   align-items: end;
   position: absolute;
   right: 10px;
