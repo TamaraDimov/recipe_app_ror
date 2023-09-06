@@ -1,21 +1,21 @@
-<%= button_to "Add Food", new_food_path, method: :post, class: "btn btn-primary" %>
-<h1>foods page</h1>
-<table class="table" style="width: 100%; border-collapse: collapse;">
+<%= link_to "Add Food", new_food_path, method: :post, class: "btn btn-primary add" %>
+<h3 class="food_title">Foods page</h3>
+<table class="table">
   <thead>
     <tr>
-      <th style="background-color: #f2f2f2; padding: 10px;">Food</th>
-      <th style="background-color: #f2f2f2; padding: 10px;">Measurement unit</th>
-      <th style="background-color: #f2f2f2; padding: 10px;">Unit price</th>
-      <th style="background-color: #f2f2f2; padding: 10px;">Actions</th>
+      <th class="input title" >Food</th>
+      <th class="input title" >Measurement unit</th>
+      <th class="input title">Unit price</th>
+      <th class="input title">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 10px;"><%= food.name %></td>
-        <td style="border: 1px solid #ddd; padding: 10px;"><%= food.measurement_unit %></td>
-        <td style="border: 1px solid #ddd; padding: 10px;"><%= food.price %></td>
-        <td style="border: 1px solid #ddd; padding: 10px;">
+        <td class="input"><%= food.name %></td>
+        <td class="input"><%= food.measurement_unit %></td>
+        <td class="input"><%= food.price %></td>
+        <td class="input">
             <%= link_to 'Delete', food_path(food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
         </td>
       </tr>

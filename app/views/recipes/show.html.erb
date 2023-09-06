@@ -1,7 +1,12 @@
-<h1>this is show view <%= @recipe.id %></h1>
+<h3>Recipe no.<%= @recipe.id %> full description</h3>
+<h3><%= @recipe.name %></h3>
+
 <section class="recipe-details">
   <div class="d-flex gap">
-    <p>Preparation time: <%= @recipe.preparation_time_minutes %> mins </p>
+    <div class="right">
+      <p class="input">Preparation time: <%= @recipe.preparation_time_minutes %> mins </p>
+      <p  class="input">Cooking time: <%= @recipe.cooking_time_minutes %> mins </p>
+    </div>
     <%= form_for @recipe, url: public_toggle_recipe_path(@recipe), method: :patch, remote: true, authenticity_token: true, html: { class: 'toggle-form' } do |f| %>
         <div class="slider-container">
         <span class="switch-label">Public</span>
@@ -14,29 +19,28 @@
       <%= f.submit 'Toggle', class: 'hidden-submit', style: 'display: none;' %>
     <% end %>
   </div>
-  <p>Cooking time: <%= @recipe.cooking_time_minutes %> mins </p>
-  <p>Steps go here...</p>
+  <p  class="input"><%= @recipe.description%></p>
   <div class="d-flex gap bottom-line p-1">
-    <%= button_to "Generate shopping list", new_food_path, method: :post, class: "btn btn-primary" %>
-    <%= button_to "Add ingredient", new_food_path, method: :post, class: "btn btn-primary" %>
+    <%= button_to "Generate shopping list", new_food_path, method: :post, class: "btn" %>
+    <%= button_to "Add ingredient", new_food_path, method: :post, class: "btn" %>
   </div>
 </section>
 <table class="table">
   <thead>
     <tr>
-      <th>Food</th>
-      <th>Quantity</th>
-      <th>Value</th>
-      <th>Actions</th>
+      <th class="input title">Food</th>
+      <th class="input title">Quantity</th>
+      <th class="input title">Value</th>
+      <th class="input title">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
-        <td>
+        <td class="input"><%= food.name %></td>
+        <td class="input"><%= food.measurement_unit %></td>
+        <td class="input"><%= food.price %></td>
+        <td class="input">
           <%= link_to 'Delete', food_path(food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
         </td>
       </tr>
