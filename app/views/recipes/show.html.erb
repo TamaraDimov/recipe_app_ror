@@ -20,9 +20,9 @@
   </div>
   <p  class="input"><%= @recipe.description%></p>
   <div class="d-flex gap bottom-line p-1">
-    <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post, class: "btn" %>
+    <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post, class: "btn btn-dark" %>
     <%#= link_to "Generate shopping list", new_food_path, method: :post, class: "btn" %>
-    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn" %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-dark" %>
     <%#= link_to "Add ingredient", new_food_path, method: :post, class: "btn" %>
   </div>
 </section>
@@ -45,8 +45,8 @@
         <td class="input"><%= recipe_food.quantity %></td>
         <td class="input"><%= recipe_food.food.price %></td>
         <td class="input">
-          <%= link_to 'Delete', recipe_food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
-          <button class="modify-button">Modify</button>
+          <%= link_to 'Delete', recipe_food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-dark' %>
+          <button class="modify-button btn btn-dark">Modify</button>
           <div class="modify-form" style="display: none;">
             <%= form_for recipe_food, url: modify_recipe_food_path(recipe_food), method: :patch, remote: true, authenticity_token: true do |f| %>
               <%= f.label :quantity %>
