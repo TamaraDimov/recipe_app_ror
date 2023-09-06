@@ -11,7 +11,7 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.new
     @ingredients = []
     @foods.each do |food|
-      @ingredients << food.name + " in " + food.measurement_unit
+      @ingredients << ("#{food.name} in #{food.measurement_unit}")
     end
   end
 
@@ -25,7 +25,7 @@ class RecipeFoodsController < ApplicationController
     food.user = nil
     food.quantity = quantity
 
-    recipe_food = RecipeFood.new(recipe: recipe, food: food, quantity: quantity)
+    recipe_food = RecipeFood.new(recipe:, food:, quantity:)
 
     if recipe_food.save
       flash[:success] = 'Object successfully created'
@@ -56,6 +56,6 @@ class RecipeFoodsController < ApplicationController
     else
       flash[:alert] = 'Failed to delete food.'
     end
-    redirect_to recipes_path(), notice: 'Food was successfully deleted.'
+    redirect_to recipes_path, notice: 'Food was successfully deleted.'
   end
 end
