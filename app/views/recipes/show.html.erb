@@ -39,7 +39,15 @@
         <td><%= recipe_food.quantity %></td>
         <td><%= recipe_food.food.price %></td>
         <td>
-          <%= link_to 'Delete', food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete', recipe_food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
+          <button class="modify-button">Modify</button>
+          <div class="modify-form" style="display: none;">
+            <%= form_for recipe_food, url: modify_recipe_food_path(recipe_food), method: :patch, remote: true, authenticity_token: true do |f| %>
+              <%= f.label :quantity %>
+              <%= f.text_field :quantity, value: recipe_food.quantity %>
+              <%= f.submit 'Update', class: 'modify-submit' %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>
@@ -57,5 +65,18 @@
         toggleForm.submit();
       });
     }
+
+    const modifyButtons = document.querySelectorAll('.modify-button');
+    const modifyForms = document.querySelectorAll('.modify-form');
+
+    modifyButtons.forEach((button, index) => {
+      button.addEventListener('click', function () {
+        if (modifyForms[index].style.display === 'none') {
+          modifyForms[index].style.display = 'block';
+        } else {
+          modifyForms[index].style.display = 'none';
+        }
+      });
+    });
   });
 </script>
