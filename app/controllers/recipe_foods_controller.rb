@@ -1,4 +1,9 @@
 class RecipeFoodsController < ApplicationController
+  def show
+    recipe_food = RecipeFood.find(params[:id])
+    redirect_to recipe_path(recipe_food.recipe)
+  end
+
   def new
     @user = current_user
     @foods = @user.foods
@@ -29,5 +34,28 @@ class RecipeFoodsController < ApplicationController
       flash[:error] = 'Failed to create the recipe food'
       render 'new'
     end
+  end
+
+  def modify
+    recipe_food = RecipeFood.find(params[:id])
+    new_quantity = params[:recipe_food][:quantity]
+
+    if recipe_food.update(quantity: new_quantity)
+      flash[:success] = 'Quantity updated successfully'
+    else
+      flash[:error] = 'Failed to update quantity'
+    end
+
+    redirect_to recipe_food_path(recipe_food)
+  end
+
+  def destroy
+    @recipe_food = RecipeFood.find(params[:id])
+    if @recipe_food.destroy
+      flash[:notice] = 'Food was successfully deleted.'
+    else
+      flash[:alert] = 'Failed to delete food.'
+    end
+    redirect_to recipes_path(), notice: 'Food was successfully deleted.'
   end
 end
