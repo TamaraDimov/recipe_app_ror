@@ -1,21 +1,21 @@
 <%= button_to "Add Food", new_food_path, method: :post, class: "btn btn-primary" %>
 <h1>foods page</h1>
-<table class="table">
+<table class="table" style="width: 100%; border-collapse: collapse;">
   <thead>
     <tr>
-      <th>Food</th>
-      <th>Measurement unit</th>
-      <th>Unit price</th>
-      <th>Actions</th>
+      <th style="background-color: #f2f2f2; padding: 10px;">Food</th>
+      <th style="background-color: #f2f2f2; padding: 10px;">Measurement unit</th>
+      <th style="background-color: #f2f2f2; padding: 10px;">Unit price</th>
+      <th style="background-color: #f2f2f2; padding: 10px;">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
-        <td>
+        <td style="border: 1px solid #ddd; padding: 10px;"><%= food.name %></td>
+        <td style="border: 1px solid #ddd; padding: 10px;"><%= food.measurement_unit %></td>
+        <td style="border: 1px solid #ddd; padding: 10px;"><%= food.price %></td>
+        <td style="border: 1px solid #ddd; padding: 10px;">
             <%= link_to 'Delete', food_path(food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
         </td>
       </tr>
