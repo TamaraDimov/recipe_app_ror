@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all
+    @user = current_user
+    @foods = @user.foods.all
   end
 
   def new
@@ -9,7 +10,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(post_food)
-    @food.user_id = current_user.id
+    @food.user = current_user
     if @food.save
       flash[:success] = 'Food was successfully added.'
       redirect_to foods_path, notice: 'Food was successfully added.'
