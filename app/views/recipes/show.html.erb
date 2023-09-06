@@ -1,4 +1,4 @@
-<h1>this is show view <%= @recipe.id %></h1>
+<h1><%= @recipe.name %> Recipe</h1>
 <section class="recipe-details">
   <div class="d-flex gap">
     <p>Preparation time: <%= @recipe.preparation_time_minutes %> mins </p>
@@ -15,7 +15,7 @@
     <% end %>
   </div>
   <p>Cooking time: <%= @recipe.cooking_time_minutes %> mins </p>
-  <p>Steps go here...</p>
+  <p>Description: <%= @recipe.description %></p>
   <div class="d-flex gap bottom-line p-1">
   <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post %>
   <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary" %>
@@ -33,13 +33,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @foods.each do |food| %>
+    <% @recipe_foods.each do |recipe_food| %>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.quantity %></td>
+        <td><%= recipe_food.food.price %></td>
         <td>
-          <%= link_to 'Delete', food_path(food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete', food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
