@@ -4,6 +4,7 @@
     <div class="input">
         <%= form.label :food %>
         <%= form.select :food, options_for_select(@ingredients), prompt: 'Pick ingredient...' %>
+        <%= link_to "Add Food", new_food_path, method: :post %>
     </div>
     <div class="input">
       <%= form.label :quantity %>
