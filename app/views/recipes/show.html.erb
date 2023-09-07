@@ -24,7 +24,7 @@
     <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-dark" %>
   </div>
 </section>
- <%if @foods == []%>
+ <%if @recipe_foods == []%>
       <h2>you have no food ingredients yet, click on "Add ingredient" to add to the list</h2>
     <%else%>
 <table class="table">

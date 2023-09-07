@@ -20,10 +20,6 @@ class FoodsController < ApplicationController
     end
   end
 
-  def show
-    @food = Food.find(params[:id])
-  end
-
   def destroy
     @food = Food.find(params[:id])
     if @food.destroy
