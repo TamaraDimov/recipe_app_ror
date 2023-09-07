@@ -6,7 +6,6 @@ RSpec.describe 'recipe', type: :view do
   before(:each) do
     @recipe = FactoryBot.create(:recipe)
     @recipe_foods = FactoryBot.create_list(:recipe_food, 3, recipe: @recipe)
-    @foods = @recipe_foods.map(&:food)
   end
 
   it 'displays the recipe details' do
@@ -26,7 +25,7 @@ RSpec.describe 'recipe', type: :view do
   end
 
   it 'displays a message when there are no food ingredients' do
-    @foods = []
+    @recipe_foods = []
 
     render template: 'recipes/show'
 
