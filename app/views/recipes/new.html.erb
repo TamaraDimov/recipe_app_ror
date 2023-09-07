@@ -1,4 +1,4 @@
-<h2>Add new food recipe</h2>
+<h4>Add new food recipe</h4>
 
 <%= form_for @recipe, url: recipes_path do |form| %>
   <div class="input noBorder">
@@ -16,7 +16,7 @@
   <div class="input noBorder">
     <%= form.select :is_public, options_for_select(['true', 'false']), prompt: 'Publuc or private?' %>
   </div>
-  <div class="btn noBorder">
-  <%= form.submit "Create Recipe"%>
-  </div>
+ <button class="btn btn-dark">
+  <%= form.submit "Create Recipe", class: "btn btn-dark noBorder" %>
+</button>
  <%end%>

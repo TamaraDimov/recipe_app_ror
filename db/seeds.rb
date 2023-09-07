@@ -25,13 +25,13 @@ Recipe.create([
     name: "Pizza",
     measurement_unit: "40 mins",
     price: "15mins",
-    quanity: 6,
+    quantity: 6,
     },
   {
     name: "Kabsa",
     measurement_unit: "km",
     price: 15.15,
-    quanity: 4,
+    quantity: 4,
     user_id: 2
     },
     {
