@@ -21,9 +21,7 @@
   <p  class="input"><%= @recipe.description%></p>
   <div class="d-flex gap bottom-line p-1">
     <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post, class: "btn btn-dark" %>
-    <%#= link_to "Generate shopping list", new_food_path, method: :post, class: "btn" %>
     <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-dark" %>
-    <%#= link_to "Add ingredient", new_food_path, method: :post, class: "btn" %>
   </div>
 </section>
  <%if @foods == []%>
