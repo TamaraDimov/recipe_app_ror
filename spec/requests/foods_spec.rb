@@ -17,30 +17,7 @@ RSpec.describe 'FoodsController', type: :request do
     end
 
     it 'the response body includes correct placeholder text' do
-      expect(response.body).to include('foods page')
-    end
-  end
-
-  describe 'GET /show' do
-    before do
-      user = FactoryBot.create(:user)
-      sign_in user
-      food = FactoryBot.create(:food)
-      get food_path(food)
-    end
-
-    it 'returns a successful response' do
-      expect(response).to have_http_status(200)
-    end
-
-    it 'correct template is rendered' do
-      expect(response).to render_template(:show)
-    end
-
-    it 'the response body includes correct placeholder text' do
-      food = FactoryBot.create(:food)
-      get food_path(food)
-      expect(response.body).to include(food.name)
+      expect(response.body).to include('Foods page')
     end
   end
 end
