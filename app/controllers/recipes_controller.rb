@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.where(user_id: current_user.id)
+    @recipes = Recipe.includes(:user).where(user_id: current_user.id)
   end
 
   def new
@@ -9,9 +9,8 @@ class RecipesController < ApplicationController
 
   def show
     @user = current_user
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
-    @foods = @recipe_foods.map(&:food)
   end
 
   def create
@@ -45,7 +44,7 @@ class RecipesController < ApplicationController
 
   def general_shopping_list
     @user = current_user
-    @recipe = Recipe.find_by(id: params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find_by(id: params[:id])
     @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
     @needed_items = []
     @recipe_foods.each do |recipe_food|
