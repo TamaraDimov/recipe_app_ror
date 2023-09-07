@@ -2,15 +2,15 @@
 
 require 'rails_helper'
 
-RSpec.describe "recipe", type: :view do
-    before(:each) do
+RSpec.describe 'recipe', type: :view do
+  before(:each) do
     @recipe = FactoryBot.create(:recipe)
     @recipe_foods = FactoryBot.create_list(:recipe_food, 3, recipe: @recipe)
     @foods = @recipe_foods.map(&:food)
   end
 
-  it "displays the recipe details" do
-    render template: "recipes/show"
+  it 'displays the recipe details' do
+    render template: 'recipes/show'
 
     expect(rendered).to have_content(@recipe.name)
     expect(rendered).to have_content("Preparation time: #{@recipe.preparation_time_minutes} mins")
@@ -25,11 +25,11 @@ RSpec.describe "recipe", type: :view do
     end
   end
 
-  it "displays a message when there are no food ingredients" do
+  it 'displays a message when there are no food ingredients' do
     @foods = []
 
-    render template: "recipes/show"
+    render template: 'recipes/show'
 
-    expect(rendered).to have_content("you have no food ingredients yet, click on \"Add ingredient\" to add to the list")
+    expect(rendered).to have_content('you have no food ingredients yet, click on "Add ingredient" to add to the list')
   end
 end
