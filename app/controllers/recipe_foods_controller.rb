@@ -17,16 +17,13 @@ class RecipeFoodsController < ApplicationController
 
   def create
     recipe = Recipe.find(params[:recipe_id])
-    food_unit = params[:recipe_food][:food]
     quantity = params[:recipe_food][:quantity]
+    food_unit = params[:recipe_food][:food]
     food_name = food_unit.split.first
-    food_old = Food.find_by(name: food_name)
-    food = food_old
-    food.user = nil
-    food.quantity = quantity
+    food = Food.find_by(name: food_name)
 
-    recipe_food = RecipeFood.new(recipe:, food:, quantity:)
-
+    recipe_food = RecipeFood.new(food:, recipe:, quantity:)
+    puts food.id
     if recipe_food.save
       flash[:success] = 'Object successfully created'
       redirect_to recipe_path(recipe)

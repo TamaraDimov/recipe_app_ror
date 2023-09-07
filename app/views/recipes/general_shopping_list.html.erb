@@ -1,7 +1,6 @@
 <h3>Shopping list</h3>
 <div class="amount">
-  <p>Amount of food to buy: $<%#= @recipe.foods.count %></p>
-  <p>Total value of food needed: $<%= recipe.foods.sum(:price) %></p>
+  <p>Amount of food to buy: <%= @needed_items.length %></p>
 </div>
 
 <table class="table">
@@ -12,13 +11,13 @@
       <th>Price</th>
     </tr>
   </thead>
-  <%# @recipes.foods.each do |food| %>
+  <% @needed_items.each do |needed_item| %>
     <tbody>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.quantity %><%= food.measurement_unit %></td>
-        <td><%= food.quantity * food.price %></td>
+        <td><%= needed_item[0] %></td>
+        <td><%= needed_item[1]  %><%= needed_item[3] %></td>
+        <td><%= needed_item[1] * needed_item[2] %></td>
       </tr>
     </tbody>
-  <%# end %>
+  <% end %>
 </table>
