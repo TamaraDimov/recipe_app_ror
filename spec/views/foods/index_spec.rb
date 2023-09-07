@@ -7,8 +7,8 @@ RSpec.describe 'foods/index', type: :view do
     # Create test data using FactoryBot
     @food1 = FactoryBot.create(:food, name: 'apple', measurement_unit: 'unit', price: 5, quantity: 3)
     @food2 = FactoryBot.create(:food, name: 'beans', measurement_unit: 'kg', price: 9, quantity: 5)
-    
-    assign(:foods, [@food1, @food2])  # Assign the test data to the view's instance variable
+
+    assign(:foods, [@food1, @food2]) # Assign the test data to the view's instance variable
   end
 
   it 'renders the Foods page' do

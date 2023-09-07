@@ -3,11 +3,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   } 
+  get '/recipes/public'
   resources :foods, only: [:index, :new, :create, :destroy, :show]
   resources :recipes, except: [:edit, :update] do
     member do
       patch :public_toggle
-      # get :general_shopping_list
     end
   end
   resources :recipes, except: %i[edit update] do

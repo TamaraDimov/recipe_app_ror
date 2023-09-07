@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe "recipes/index.html.erb", type: :view do
-  it "displays a list of recipes" do
+RSpec.describe 'recipes/index.html.erb', type: :view do
+  it 'displays a list of recipes' do
     # Stubbing data for @recipes
     recipe1 = double('Recipe', id: 1, name: 'Recipe 1', description: 'Description 1')
     recipe2 = double('Recipe', id: 2, name: 'Recipe 2', description: 'Description 2')
