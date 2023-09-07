@@ -21,21 +21,5 @@
         }
       });
     });
-  
-    // // Function to clean up resources
-    // function cleanUp() {
-    //   if (toggleSwitch && toggleForm) {
-    //     toggleSwitch.removeEventListener('change', toggleFormSubmit);
-    //   }
-  
-    //   modifyButtons.forEach((button, index) => {
-    //     button.removeEventListener('click', toggleModifyFormDisplay);
-    //   });
-    // }
-  
-    // // Event listener for the 'beforeunload' event
-    // window.addEventListener('beforeunload', () => {
-    //   cleanUp();
-    // });
   })();
   
